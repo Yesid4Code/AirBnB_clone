@@ -2,7 +2,7 @@
 """ Class BaseModel """
 
 from uuid import uuid4
-from detetime import daterime
+from datetime import datetime
 
 
 class BaseModel:
