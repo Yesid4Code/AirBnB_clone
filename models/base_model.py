@@ -25,3 +25,8 @@ class BaseModel:
         Returns a dictionary containing all keys/values of
         __dict__ of the instance.
         """
+        dic = self.__dict__.copy()
+        dict['create_at'] = self.create_at.isoformat()
+        dict['update_at'] = self.uptade_at.isoformat()
+        dict['__class__'] = self.__class__.__name__
+        return dict
