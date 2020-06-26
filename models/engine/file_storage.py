@@ -10,7 +10,7 @@ class FileStorage:
         - serializes instances to a JSON file.
         - deserializes JSON file to instances.
     """
-    __file_path = file.json
+    __file_path = "file.json"
     __objects = {}
 
     def __init__(self):
@@ -25,14 +25,24 @@ class FileStorage:
             sets in __objects the obj with
             key: <obj class name>.id
         """
-        FileStorage.__objects["{}.{}".
-                              format(obj.__.class__.__name__, obj.id)] = obj
+        FileStorage.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
 
     def save(self):
         """ Serializes __objects to the JSON file. """
         dic = {}
         for key, value in FileStorage.__objects.items():
-            dic.update({key: value.to_dic()})
+            # dic.update({key: value.to_dict()})
+            dic[key] = value.to_dict()
 
         with open(FileStorage.__file_path, "w") as fil:
-            json.dump(dic, file)
+            json.dump(dic, fil)
+
+    def reload(self):
+        """ Deserializes the JSON file to __objects.  """
+        try:
+            with open(FileStorage.__file_path) as fil:
+                listt = json.load(fil)
+            for key, value in listt.items():
+                FileStorage.__objects[key] = BaseModel(**value)
+        except:
+            pass
