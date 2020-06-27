@@ -1,8 +1,12 @@
 #!/usr/bin/python3
 """ file_storage module that recreate the BaseModel class. """
 import json
+from models.user import User
 from models.base_model import BaseModel
 
+
+# classes
+classes = {"BaseModel": BaseModel, "User": User}
 
 class FileStorage:
     """
@@ -43,6 +47,7 @@ class FileStorage:
             with open(FileStorage.__file_path) as fil:
                 listt = json.load(fil)
             for key, value in listt.items():
-                FileStorage.__objects[key] = BaseModel(**value)
+                key_class = key.split(".")
+                FileStorage.__objects[key] = classes[key_class[0]](**value)
         except:
             pass
