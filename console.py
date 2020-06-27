@@ -3,8 +3,10 @@
 import cmd
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 
 
+classes = {"BaseModel": BaseModel, "User": User}
 class HBNBCommand(cmd.Cmd):
     """ HBnB Command interpreter """
     prompt = "(hbnb)"
@@ -25,10 +27,10 @@ class HBNBCommand(cmd.Cmd):
         """ Create new instance of the class """
         if len(args) == 0:
             print("** class name missing **")
-        elif not args == "BaseModel":
+        elif not args in classes:
             print("** class doesn't exist **")
         else:
-            new = BaseModel()
+            new = classes[args]()
             new.save()
             print(new.id)
 
@@ -38,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
         objects = storage.all()
         if len(args) == 0:
             print("** class name missing **")
-        elif not command[0] == "BaseModel":
+        elif not command[0] in classes:
             print("** class doesn't exist **")
         elif len(command) == 1:
             print("** instance id missing **")
@@ -53,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
         objects = storage.all()
         if len(args) == 0:
             print("** class name missing **")
-        elif not command[0] == "BaseModel":
+        elif not command[0] in classes:
             print("** class doesn't exist **")
         elif len(command) == 1:
             print("** instance id missing **")
@@ -67,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
         """ Prints all string representation of all instances """
         valshow = storage.all().values()
         allist = []
-        if not args == "BaseModel" and len(args) > 1:
+        if not args in classes and len(args) > 1:
                 print("** class doesn't exist **")
         else:
             for val in valshow:
@@ -81,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
         objects = storage.all()
         if len(args) == 0:
             print("** class name missing **")
-        elif not command[0] == "BaseModel":
+        elif not command[0] in classes:
             print("** class doesn't exist **")
         elif len(command) == 1:
             print("** instance id missing **")
