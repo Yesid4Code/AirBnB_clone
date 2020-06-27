@@ -74,5 +74,27 @@ class HBNBCommand(cmd.Cmd):
                 allist.append(str(val))
             print(allist)
 
+    def do_update(self, args):
+        """. """
+        command = args.split(" ")
+        objects = storage.all()
+        if len(args) == 0:
+            print("** class name missing **")
+        elif not command[0] == "BaseModel":
+            print("** class doesn't exist **")
+        elif len(command) == 1:
+            print("** instance id missing **")
+        elif "{}.{}".format(command[0], command[1]) not in objects:
+            print("** no instance found **")
+        elif len(command) == 2:
+            print("** attribute name missing **")
+        elif len(command) == 3:
+            print("** value missing **")
+        else:
+            key = objects["{}.{}".format(command[0], command[1])]
+            setattr(key, command[2].replace('"', ''),
+                    command[3].replace('"', ''))
+            key.save()
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
