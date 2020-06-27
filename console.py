@@ -75,7 +75,8 @@ class HBNBCommand(cmd.Cmd):
             print(allist)
 
     def do_update(self, args):
-        """. """
+        """ Updates an instance based on the class name and id
+            by adding or updating attribute """
         command = args.split(" ")
         objects = storage.all()
         if len(args) == 0:
