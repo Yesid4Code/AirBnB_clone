@@ -2,11 +2,18 @@
 """ file_storage module that recreate the BaseModel class. """
 import json
 from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models.base_model import BaseModel
 
 
 # classes
-classes = {"BaseModel": BaseModel, "User": User}
+classes = {"BaseModel": BaseModel, "User": User, "Amenity": Amenity,
+           "Review": Review, "City": City, "Place": Place, "State": State}
+
 
 class FileStorage:
     """
@@ -29,7 +36,8 @@ class FileStorage:
             sets in __objects the obj with
             key: <obj class name>.id
         """
-        FileStorage.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
+        FileStorage.__objects["{}.{}".format(obj.__class__.__name__,
+                              obj.id)] = obj
 
     def save(self):
         """ Serializes __objects to the JSON file. """
