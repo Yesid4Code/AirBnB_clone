@@ -4,9 +4,17 @@ import cmd
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 
 
-classes = {"BaseModel": BaseModel, "User": User}
+classes = {"BaseModel": BaseModel, "User": User, "Amenity": Amenity,
+           "Review": Review, "City": City, "Place": Place, "State": State}
+
+
 class HBNBCommand(cmd.Cmd):
     """ HBnB Command interpreter """
     prompt = "(hbnb)"
@@ -27,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
         """ Create new instance of the class """
         if len(args) == 0:
             print("** class name missing **")
-        elif not args in classes:
+        elif not (args in classes):
             print("** class doesn't exist **")
         else:
             new = classes[args]()
@@ -69,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         """ Prints all string representation of all instances """
         valshow = storage.all().values()
         allist = []
-        if not args in classes and len(args) > 1:
+        if not (args in classes) and len(args) > 1:
                 print("** class doesn't exist **")
         else:
             for val in valshow:
