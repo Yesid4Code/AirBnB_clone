@@ -7,7 +7,6 @@ Test BaseModel  containing classes to test on the BassModel class:
 """
 import unittest
 import pep8
-import time
 from datetime import datetime
 from models import base_model
 from models.base_model import BaseModel
