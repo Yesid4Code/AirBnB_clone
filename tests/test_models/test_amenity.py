@@ -8,26 +8,6 @@ from models import amenity
 from models.amenity import Amenity
 
 
-class TestAmenity(unittest.TestCase):
-    """New class to test class Amenity"""
-
-    def setUp(self):
-        """Setting up"""
-        self.new = Amenity()
-
-    def tearDown(self):
-        """Cleaning up after each test"""
-        del self.new
-
-    def test_is_instance(self):
-        """Check if attributes are instances"""
-        self.assertTrue(type(self.new) is Amenity)
-
-    def test_if_str(self):
-        """Check if the attribute is str"""
-        self.assertTrue(type(self.new.name) is str)
-
-
 class TestPep8B(unittest.TestCase):
     """ Check for pep8 validation. """
     def test_pep8(self):
@@ -54,5 +34,27 @@ class TestDocsB(unittest.TestCase):
         """ check for method documentation """
         for func in dir(Amenity):
             self.assertTrue(len(func.__doc__) > 0)
+
+
+class TestAmenity(unittest.TestCase):
+    """New class to test class Amenity"""
+
+    def setUp(self):
+        """Setting up"""
+        self.new = Amenity()
+
+    def tearDown(self):
+        """Cleaning up after each test"""
+        del self.new
+
+    def test_is_instance(self):
+        """Check if attributes are instances"""
+        self.assertTrue(type(self.new) is Amenity)
+
+    def test_if_str(self):
+        """Check if the attribute is str"""
+        self.assertTrue(type(self.new.name) is str)
+
+
 if __name__ == '__main__':
     unittest.main()
