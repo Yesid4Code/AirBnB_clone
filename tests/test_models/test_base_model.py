@@ -81,6 +81,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(dic["updated_at"],
                          self.model0.updated_at.strftime(form))
 
+if __name__ == '__main__':
+    unittest.main()
 
 # Test
 # python3 -m unittest discover tests
