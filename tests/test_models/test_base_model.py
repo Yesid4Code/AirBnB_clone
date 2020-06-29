@@ -17,7 +17,7 @@ class TestPep8B(unittest.TestCase):
     def test_pep8(self):
         """ test base and test_base for pep8 conformance """
         style = pep8.StyleGuide(quiet=True)
-        file1 = 'models/base_models.py'
+        file1 = 'models/base_model.py'
         file2 = 'tests/test_models/test_base_model.py'
         result = style.check_files([file1, file2])
         self.assertEqual(result.total_errors, 0,
