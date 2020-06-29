@@ -41,12 +41,27 @@ class TestDocsB(unittest.TestCase):
 
 
 class TestBaseModel():
-    """
-    Class containing methods to test on BaseModel class:
-    """
-    pass
+    """ Check for functionality. """
+    def SetUp(self):
+        """ Method to set the star point. """
+        self.model0 = BaseModel()
+        self.model1 = BaseModel()
 
+    def test_is_instance(self):
+        """ Check if a variable is an instance. """
+        self.assertIsIstance(self.model0, BaseModel)
+
+    def test_id(self):
+        """ Check if id of a instance is a string or equal to another one. """
+        self.asserNotEqual(self.model0.id, self.model1.id)
+        self.asserEqual(type(self.model0.id), str)
+
+    def test_save(self):
+        """ Test if the method 'save' is working. """
+        old_create_at = self.model0.create_at
+        self.model0.save()
+        
 
 # Test
 # python3 -m unittest discover tests
-# python3 -m unittest tests/test_models/test_base.py
+# python3 -m unittest tests/test_models/test_base_model.py
