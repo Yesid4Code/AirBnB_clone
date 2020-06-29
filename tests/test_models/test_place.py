@@ -76,3 +76,6 @@ class TestPlace(unittest.TestCase):
     def test_if_list(self):
         """ Test if the attribute is a list. """
         self.assertEqual(type(self.new.amenity_ids), list)
+
+if __name__ == '__main__':
+    unittest.main()
