@@ -54,5 +54,6 @@ class TestDocsB(unittest.TestCase):
         """ check for method documentation """
         for func in dir(State):
             self.assertTrue(len(func.__doc__) > 0)
+
 if __name__ == '__main__':
     unittest.main()
