@@ -33,14 +33,14 @@ class FileStorage:
             sets in __objects the obj with
             key: <obj class name>.id
         """
-        FileStorage.__objects["{}.{}".format(obj.__class__.__name__,
-                              obj.id)] = obj
+        if obj is not None:
+            FileStorage.__objects["{}.{}".format(obj.__class__.__name__,
+                                  obj.id)] = obj
 
     def save(self):
         """ Serializes __objects to the JSON file. """
         dic = {}
         for key, value in FileStorage.__objects.items():
-            # dic.update({key: value.to_dict()})
             dic[key] = value.to_dict()
 
         with open(FileStorage.__file_path, "w") as fil:
@@ -49,7 +49,7 @@ class FileStorage:
     def reload(self):
         """ Deserializes the JSON file to __objects.  """
         try:
-            with open(FileStorage.__file_path) as fil:
+            with open(FileStorage.__file_path, "r") as fil:
                 listt = json.load(fil)
             for key, value in listt.items():
                 key_class = key.split(".")
