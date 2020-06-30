@@ -5,8 +5,9 @@ Test BaseModel  containing classes to test on the BassModel class:
     * Style.
     * Documentation.
 """
-import unittest
+import os
 import pep8
+import unittest
 from datetime import datetime
 from models import base_model
 from models.base_model import BaseModel
@@ -51,6 +52,15 @@ class TestBaseModel(unittest.TestCase):
         """ . """
         del self.model0
         del self.model1
+
+    def test_permissions(self):
+        """test read-write-execute permissions"""
+        read = os.access('models/base_model.py', os.R_OK)
+        self.assertTrue(read)
+        write = os.access('models/base_model.py', os.W_OK)
+        self.assertTrue(write)
+        exe = os.access('models/base_model.py', os.X_OK)
+        self.assertTrue(exe)
 
     def test_is_instance(self):
         """ Check if a variable is an instance. """
