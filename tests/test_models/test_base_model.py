@@ -66,7 +66,7 @@ class TestBaseModel(unittest.TestCase):
         created_at = self.model0.created_at
         updated_at = self.model0.updated_at
         self.model0.save()
-        self.assertNotEqual(created_at, updated_at)
+        self.assertEqual(created_at, updated_at)
 
     def test_to_dict(self):
         """ Test if the method return a dictionary correctly. """
