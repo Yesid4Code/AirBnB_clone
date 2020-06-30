@@ -43,23 +43,6 @@ class TestDocsB(unittest.TestCase):
 
 class TestFileStorage(unittest.TestCase):
     """ Check for functionality of File_Storage class. """
-    def setUp(self):
-        """ Method to set the star point. """
-        self.model0 = FileStorage()
-
-    def tearDown(self):
-        """ . """
-        del self.model0
-
-    def test_is_instance(self):
-        """ Check if a variable is an instance. """
-        self.assertIsInstance(self.model0, FileStorage)
-
-    def test_all(self):
-        """ Test if the method return a dictionary correctly. """
-        dic = self.model0.all()
-        self.assertEqual(type(dic), dict)
-        self.assertIs(dic, self.model0._FileStorage__objects)
 
     def test_permissions(self):
         """test read-write-execute permissions"""
