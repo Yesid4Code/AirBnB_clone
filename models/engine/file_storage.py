@@ -51,8 +51,8 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as fil:
                 listt = json.load(fil)
-            for key, value in listt.items():
-                key_class = key.split(".")
-                FileStorage.__objects[key] = classes[key_class[0]](**value)
+            for key, val in listt.items():
+                # key_class = key.split(".")
+                FileStorage.__objects[key] = classes[val["__class__"]](**val)
         except:
             pass
