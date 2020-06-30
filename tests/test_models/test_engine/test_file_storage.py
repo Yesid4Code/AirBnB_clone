@@ -57,5 +57,12 @@ class TestFileStorage(unittest.TestCase):
         obj = FileStorage()
         self.assertIsInstance(obj, FileStorage)
 
+    def check_all(self):
+        """ Checks a correct dictionary """
+        dic = self.storage_1.all()
+        self.assertEqual(type(dic), dict)
+        self.assertIs(dic, self.storage_1._FileStorage__objects)
+
+
 if __name__ == '__main__':
     unittest.main()
