@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+
 """ Class BaseModel """
 import models
 from uuid import uuid4
