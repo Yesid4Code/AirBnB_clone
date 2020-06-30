@@ -63,10 +63,13 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """ Test if the method 'save' is working. """
-        created_at = self.model0.created_at
-        updated_at = self.model0.updated_at
+        old_created_at = self.model0.created_at
+        old_updated_at = self.model0.updated_at
         self.model0.save()
-        self.assertNotEqual(created_at, updated_at)
+        new_created_at = self.model0.created_at
+        new_updated_at = self.model0.updated_at
+        self.assertNotEqual(old_updated_at, new_updated_at)
+        self.assertEqual(old_created_at, new_created_at)
 
     def test_to_dict(self):
         """ Test if the method return a dictionary correctly. """
