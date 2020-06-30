@@ -47,11 +47,12 @@ class FileStorage:
 
     def reload(self):
         """ Deserializes the JSON file to __objects.  """
+        listt = {}
         try:
             with open(FileStorage.__file_path, "r") as fil:
                 listt = json.load(fil)
             for key, value in listt.items():
                 key_class = key.split(".")
-                FileStorage.__objects[key] = classes[key_class](**value)
+                FileStorage.__objects[key] = classes[key_class[0]](**value)
         except:
             pass
