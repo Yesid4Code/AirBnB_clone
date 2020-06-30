@@ -5,6 +5,7 @@ Test Filestorage containing classes to test on the FileStorage class:
     * Documentation.
     * Functionality.
 """
+import os
 import pep8
 import unittest
 from models.base_model import BaseModel
@@ -60,6 +61,19 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(dic), dict)
         self.assertIs(dic, self.model0._FileStorage__objects)
 
+    def test_permissions(self):
+        """test read-write-execute permissions"""
+        read = os.access('models/engine/file_storage.py', os.R_OK)
+        self.assertTrue(read)
+        write = os.access('models/engine/file_storage.py', os.W_OK)
+        self.assertTrue(write)
+        exe = os.access('models/engine/file_storage.py', os.X_OK)
+        self.assertTrue(exe)
+
+    def test_instance(self):
+        """check if obj is an instance of BaseModel"""
+        obj = FileStorage()
+        self.assertIsInstance(obj, FileStorage)
 
 if __name__ == '__main__':
     unittest.main()
