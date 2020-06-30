@@ -59,8 +59,9 @@ class TestFileStorage(unittest.TestCase):
 
     def test_instance(self):
         """check if obj is an instance of BaseModel"""
-        obj = FileStorage()
-        self.assertIsInstance(obj, FileStorage)
+        # obj = FileStorage()
+        self.assertIsInstance(self.storage_1, FileStorage)
+        # self.assertIsInstance(obj, FileStorage)
 
     def check_all(self):
         """ Checks a correct dictionary """
