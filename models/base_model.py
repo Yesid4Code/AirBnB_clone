@@ -20,6 +20,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = self.updated_at = datetime.now()
             models.storage.new(self)
+            models.storage.save()
 
     def __str__(self):
         """ String representation  """
