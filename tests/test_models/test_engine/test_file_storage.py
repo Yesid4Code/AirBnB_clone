@@ -8,8 +8,6 @@ Test Filestorage containing classes to test on the FileStorage class:
 import os
 import pep8
 import unittest
-from datetime import datetime
-from models.base_model import BaseModel
 from models.engine import file_storage
 from models.engine.file_storage import FileStorage
 
@@ -56,9 +54,8 @@ class TestFileStorage(unittest.TestCase):
 
     def test_instance(self):
         """check if obj is an instance of BaseModel"""
-        # obj = FileStorage()
-        self.assertIsInstance(self.storage_1, FileStorage)
-        # self.assertIsInstance(obj, FileStorage)
+        obj = FileStorage()
+        self.assertIsInstance(obj, FileStorage)
 
 if __name__ == '__main__':
     unittest.main()
