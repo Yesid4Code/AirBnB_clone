@@ -33,7 +33,7 @@ class TestDocsB(unittest.TestCase):
 
     def test_class_doc(self):
         """ check for documentation """
-        self.assertTrue(len(file_storage.__doc__) > 0)
+        self.assertTrue(len(FileStorage.__doc__) > 0)
 
     def test_method_docs(self):
         """ check for method documentation """
