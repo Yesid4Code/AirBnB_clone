@@ -68,6 +68,7 @@ class TestBaseModel(unittest.TestCase):
         self.model0.save()
         new_created_at = self.model0.created_at
         new_updated_at = self.model0.updated_at
+        self.model0.save()
         self.assertNotEqual(old_updated_at, new_updated_at)
         self.assertEqual(old_created_at, new_created_at)
 
