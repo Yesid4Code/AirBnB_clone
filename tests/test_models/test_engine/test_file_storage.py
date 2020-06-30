@@ -9,6 +9,7 @@ import os
 import pep8
 import unittest
 from datetime import datetime
+from models.base_model import BaseModel
 from models.engine import file_storage
 from models.engine.file_storage import FileStorage
 
