@@ -42,6 +42,9 @@ class TestDocsB(unittest.TestCase):
 
 class TestFileStorage(unittest.TestCase):
     """ Check for functionality of File_Storage class. """
+    def setUp(self):
+        """ setUp. """
+        self.storage_1 = FileStorage()
 
     def test_permissions(self):
         """test read-write-execute permissions"""
