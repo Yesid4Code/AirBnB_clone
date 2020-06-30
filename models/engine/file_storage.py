@@ -10,17 +10,15 @@ from models.state import State
 from models.base_model import BaseModel
 
 
-# classes
-classes = {"BaseModel": BaseModel, "User": User, "Amenity": Amenity,
-           "Review": Review, "City": City, "Place": Place, "State": State}
-
-
 class FileStorage:
     """
     Class that:
         - serializes instances to a JSON file.
         - deserializes JSON file to instances.
     """
+    classes = {"BaseModel": BaseModel, "User": User, "Amenity": Amenity,
+               "Review": Review, "City": City, "Place": Place, "State": State}
+
     __file_path = "file.json"
     __objects = {}
 
@@ -52,7 +50,6 @@ class FileStorage:
             with open(FileStorage.__file_path, "r") as fil:
                 listt = json.load(fil)
             for key, val in listt.items():
-                # key_class = key.split(".")
-                FileStorage.__objects[key] = classes[val["__class__"]](**val)
+                self.__objects[key] = self.classes[val["__class__"]](**val)
         except:
             pass
