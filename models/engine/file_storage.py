@@ -33,9 +33,8 @@ class FileStorage:
             sets in __objects the obj with
             key: <obj class name>.id
         """
-        if obj is not None:
-            FileStorage.__objects["{}.{}".format(obj.__class__.__name__,
-                                  obj.id)] = obj
+        FileStorage.__objects["{}.{}".format(obj.__class__.__name__,
+                              obj.id)] = obj
 
     def save(self):
         """ Serializes __objects to the JSON file. """
@@ -53,6 +52,6 @@ class FileStorage:
                 listt = json.load(fil)
             for key, value in listt.items():
                 key_class = key.split(".")
-                FileStorage.__objects[key] = classes[key_class[0]](**value)
+                FileStorage.__objects[key] = classes[key_class](**value)
         except:
             pass
