@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 """
 Test Filestorage containing classes to test on the FileStorage class:
-    * Functionality.
     * Style.
     * Documentation.
+    * Functionality.
 """
-import unittest
 import pep8
-from models.engine.file_storage import FileStorage
+import unittest
 from models.base_model import BaseModel
 from models.engine import file_storage
+from models.engine.file_storage import FileStorage
 
 
 class TestPep8B(unittest.TestCase):
@@ -38,6 +38,28 @@ class TestDocsB(unittest.TestCase):
         """ check for method documentation """
         for func in dir(FileStorage):
             self.assertTrue(len(func.__doc__) > 0)
+
+
+class TestFileStorage(unittest.TestCase):
+    """ Check for functionality of File_Storage class. """
+    def setUp(self):
+        """ Method to set the star point. """
+        self.model0 = FileStorage()
+
+    def tearDown(self):
+        """ . """
+        del self.model0
+
+    def test_is_instance(self):
+        """ Check if a variable is an instance. """
+        self.assertIsInstance(self.model0, FileStorage)
+
+    def test_all(self):
+        """ Test if the method return a dictionary correctly. """
+        dic = self.model0.all()
+        self.assertEqual(type(dic), dict)
+        self.assertIs(dic, self.model0._FileStorage__objects)
+
 
 if __name__ == '__main__':
     unittest.main()
