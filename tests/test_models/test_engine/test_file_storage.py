@@ -44,9 +44,6 @@ class TestDocsB(unittest.TestCase):
 
 class TestFileStorage(unittest.TestCase):
     """ Check for functionality of File_Storage class. """
-    def setUp(self):
-        """ setUp. """
-        self.storage_1 = FileStorage()
 
     def test_permissions(self):
         """test read-write-execute permissions"""
@@ -62,13 +59,6 @@ class TestFileStorage(unittest.TestCase):
         # obj = FileStorage()
         self.assertIsInstance(self.storage_1, FileStorage)
         # self.assertIsInstance(obj, FileStorage)
-
-    def check_all(self):
-        """ Checks a correct dictionary """
-        dic = self.storage_1.all()
-        self.assertEqual(type(dic), dict)
-        self.assertIs(dic, self.storage_1._FileStorage__objects)
-
 
 if __name__ == '__main__':
     unittest.main()
