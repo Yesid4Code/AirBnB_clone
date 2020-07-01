@@ -1,10 +1,28 @@
 # 0x00. AirBnB clone - The console
 <p align="center">
-  <img src="https://github.com/bdbaraban/AirBnB_clone/blob/master/assets/hbnb_logo.png" alt="HolbertonBnB logo">
+  <img src="https://github.com/bdbaraban/AirBnB_clone/blob/master/assets/hbnb_logo.png" alt="HolbertonBnB logo" width="80%" height="200">
 </p>
 
 <h1 align="center">HolbertonBnB</h1>
 <p align="center">An AirBnB clone.</p>
+
+
+The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming.
+#### Goals.
+The main goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). To make this possible, we will perform the following steps:
+* Create a command interpreter to manipulate data without a visual interface, like in a Shell (perfect for development and debugging) (built in this segment).
+
+*  A website (the front-end) that shows the final product to everybody: static and dynamic
+* A database or files that store data (data = objects)
+* An API that provides a communication interface between the front-end and your data (retrieve, create, delete, update them)
+
+#### Functionalities of this command interpreter:
+* Create a new object (ex: a new User or a new Place)
+* Retrieve an object from a file, a database etc...
+* Do operations on objects (count, compute stats, etc...)
+* Update attributes of an object
+* Destroy an object
+
 
 ## Command Sytax and Usage:
 
