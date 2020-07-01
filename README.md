@@ -70,5 +70,6 @@ $ python3 unittest -m tests/test_console.py
 ```
 
 ## Authors :black_nib:
-* **Oscar Andres Montes** <[Andmontc](https://github.com/Andmontc)>
-* **Yesid A. López V.** <[Yesid4Code](https://github.com/Yesid4Code)>
+* **Oscar Andres Montes** <a href="https://twitter.com/ss">Twitter : @Damstyx</a> <a href="https://github.com/Andmotc">GitHub: @Andmontc</a>
+
+* **Yesid A. López V.** <a href="https://twitter.com/Yesid4Code">Twitter : @Yesid4Code</a> <a href="https://github.com/Yesid4Code">GitHub: @Yesid4Code</a>
