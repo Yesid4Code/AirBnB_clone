@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ HBnB Console """
+import re
 import cmd
 from models import storage
 from models.base_model import BaseModel
@@ -31,6 +32,31 @@ class HBNBCommand(cmd.Cmd):
         """ Empty Line doesn't do anything """
         pass
 
+    def default(self, args):
+        """
+        Separete the line command to find instrucciontions.
+            Expect: <class name>.all().
+        """
+        command = args.split(".")
+        if len(command) == 2:
+            if command[1] == "count()":
+                self.do_count(command[0])
+            elif command[1] == "all()":
+                self.do_all(command[0])
+            elif command[1][0:4] == "show":
+                # self.do_show(command[0] + " " + command[1][5:])
+                idd = re.split(r'show\("|"\)', command[1])
+                self.do_show(command[0] + " " + idd[1])
+            elif command[1][:7] == "destroy":
+                idd = re.split(r'destroy\("|"\)', command[1])
+                self.do_destroy(command[0] + " " + idd[1])
+            elif command[1][:6] == "update":
+                lis = re.split(r'update\("|"|, "|\)', command[1])
+                print(list_u)
+                print("Yo: " + list_u[5])
+                self.do_update(command[0] +
+                               " " + lis[1] + " " + lis[3] + " " + lis[5])
+
     def do_create(self, args):
         """ Create new instance of the class """
         if len(args) == 0:
@@ -41,6 +67,25 @@ class HBNBCommand(cmd.Cmd):
             new = classes[args]()
             new.save()
             print(new.id)
+
+    def do_count(self, args):
+        """ Count the number of instances of a class. """
+        command = args.split(" ")
+        objects = storage.all()
+        count = 0
+
+        if not (args in classes) and len(args) > 0:
+            print("** class doesn't exist **")
+        elif len(args) == 0:
+            for k in objects.keys():
+                count += 1
+            print(count)
+        else:
+            for k in objects:
+                key = k.split(".")
+                if key[0] == command[0]:
+                    count += 1
+            print(count)
 
     def do_show(self, args):
         """ Show string representation """
@@ -75,13 +120,20 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """ Prints all string representation of all instances """
-        valshow = storage.all().values()
+        command = args.split(" ")
+        objects = storage.all()
         allist = []
-        if not (args in classes) and len(args) > 1:
+        if not (args in classes) and len(args) > 0:
                 print("** class doesn't exist **")
+        elif len(args) == 0:
+            for value in objects.values():
+                allist.append(str(value))
+            print(allist)
         else:
-            for val in valshow:
-                allist.append(str(val))
+            for k, value in objects.items():
+                key = k.split(".")
+                if key[0] == command[0]:
+                    allist.append(str(value))
             print(allist)
 
     def do_update(self, args):
