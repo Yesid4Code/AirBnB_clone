@@ -51,9 +51,9 @@ class HBNBCommand(cmd.Cmd):
                 idd = re.split(r'destroy\("|"\)', command[1])
                 self.do_destroy(command[0] + " " + idd[1])
             elif command[1][:6] == "update":
-                lis = re.split(r'update\("|"|, "|\)', command[1])
-                print(list_u)
-                print("Yo: " + list_u[5])
+                lis = re.split(r'update\("|"|, "|"|, |\)', command[1])
+                print(lis)
+                print("Yo: " + lis[5])
                 self.do_update(command[0] +
                                " " + lis[1] + " " + lis[3] + " " + lis[5])
 
