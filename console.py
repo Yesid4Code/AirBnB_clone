@@ -51,11 +51,34 @@ class HBNBCommand(cmd.Cmd):
                 idd = re.split(r'destroy\("|"\)', command[1])
                 self.do_destroy(command[0] + " " + idd[1])
             elif command[1][:6] == "update":
-                lis = re.split(r'update\("|"|, "|"|, |\)', command[1])
-                print(lis)
-                print("Yo: " + lis[5])
-                self.do_update(command[0] +
-                               " " + lis[1] + " " + lis[3] + " " + lis[5])
+                if "{" in command[1]:
+                    idd = dictt = ""
+                    i  = h = 0
+                    for idx, item in enumerate(command[1]):
+                        if item == '"':
+                            i += 1
+                        if i > 0 and i < 2:
+                            idd += item
+                        if item == "{":
+                            h = idx + 1
+                    idd = idd[1:]
+                    dictt = command[1][h: -2]
+                    # elem_dic = dictt.split(",")
+                    # print(idd)
+                    # print(dictt)
+                    for item in dictt.split(","):
+                        # print(item)
+                        arg_dic = item.split(":", 1)
+                        # print(arg_dic)
+                        arg_dic0 = arg_dic[0].strip(" \"'")
+                        arg_dic1 = arg_dic[1].strip(" \"'")
+                        self.do_update(command[0] +
+                                       " " + idd +
+                                       " " + arg_dic0 + " " + arg_dic1)
+                else:
+                    lis = re.split(r'update\("|"|, "|"|, |\)', command[1])
+                    self.do_update(command[0] +
+                                   " " + lis[1] + " " + lis[3] + " " + lis[5])
 
     def do_create(self, args):
         """ Create new instance of the class """
