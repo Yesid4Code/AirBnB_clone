@@ -53,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
             elif command[1][:6] == "update":
                 if "{" in command[1]:
                     idd = dictt = ""
-                    i  = h = 0
+                    i = h = 0
                     for idx, item in enumerate(command[1]):
                         if item == '"':
                             i += 1
