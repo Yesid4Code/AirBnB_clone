@@ -15,7 +15,6 @@ class TestPep8Console(unittest.TestCase):
                      "Found code style errors (and warning).")
 
 
-
 class TestDocsB(unittest.TestCase):
     """ Check for documentation. """
     def test_module_doc(self):
