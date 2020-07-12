@@ -4,7 +4,11 @@
     width: 100%;
     border: 1px solid #DDDDDD; /* grey */
     border-radius: 4px;
+    margin-top: 30px; /* Margin with the header. */
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 button {
@@ -14,7 +18,7 @@ button {
     border-radius: 4px;
     margin-right: 30px;
     background-color: #FF5A5F; /* light red */
-    color: #FFFFFF;
+    color: #FFFFFF; /* Characters - White */
     font-size: 18px;
 }
 
