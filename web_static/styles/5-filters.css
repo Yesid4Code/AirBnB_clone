@@ -37,7 +37,7 @@ button:hover {
 }
 
 .locations h3, .amenities h3 {
-    color: #484848 /* dark grey */
+    color: #484848; /* dark grey */
     font-weight: 600;
     margin-left: 15%;
     margin-bottom: 3%;
